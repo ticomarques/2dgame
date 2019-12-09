@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import World from './components/World'
 
 function App() {
   return (
-    <h1>Teste</h1>
-  );
+    <div>
+      <World></World>
+    </div>
+  )
 }
 
 export default App;
