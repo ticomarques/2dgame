@@ -19,6 +19,24 @@ const getNewPosition = (oldPos, direction) => {
     }
 }
 
+const getSpriteLocation = (walkIndex, direction) => {
+    switch(direction){
+        case 'SOUTH':
+            return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
+        case 'EAST':
+            return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`
+        case 'WEST':
+            return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
+        case 'NORTH':
+            return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
+    }
+}
+
+const getWalkIndex = () => {
+    const walkIndex = store.getState().player.walkIndex
+    return walkIndex >= 7 ? 0 : walkIndex + 1
+}
+
 const observeBoundaries = (oldPos, newPos) => {
     return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) && 
            (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
@@ -31,11 +49,15 @@ const observeImpassable = (oldPos, newPos) => {
     return nextTile < 5
 }
 
-const dispatchMove = (newPos) => {
+const dispatchMove = (direction, newPos) => {
+    const walkIndex = getWalkIndex()
     store.dispatch({
         type: 'MOVE_PLAYER',
         payload: {
-            position: newPos
+            position: newPos,
+            direction,
+            walkIndex,
+            spriteLocation: getSpriteLocation(walkIndex, direction),
         }
     })
 }
@@ -45,7 +67,7 @@ const attemptMove = (direction) => {
     const newPos = getNewPosition(oldPos, direction)
 
     if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos)){
-        dispatchMove(newPos)
+        dispatchMove(direction, newPos)
     }
 }
 

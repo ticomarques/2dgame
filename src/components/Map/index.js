@@ -46,7 +46,7 @@ const Map = (props) => {
                 left: '0px',
                 width: '800px',
                 height: '400px',
-                border: '4px solid white'
+                border:'1px solid white',
             }}
         >
             {

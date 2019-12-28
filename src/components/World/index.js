@@ -15,7 +15,7 @@ const World = (props) => {
     return(
         <div style={{
             position: 'relative',
-            backgroundColor: 'green',
+            backgroundColor: '#42b842',
             width: '800px',
             height: '400px',
             margin: '20px auto'

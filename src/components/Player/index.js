@@ -11,7 +11,7 @@ const Player = (props) => {
                 top: props.position[1],
                 left: props.position[0],
                 backgroundImage: `url(${walkSprite})`,
-                backgroundPosition: '0px 0px',
+                backgroundPosition: props.spriteLocation,
                 width: '40px',
                 height: '40px',
             }}
