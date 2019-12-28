@@ -29,6 +29,8 @@ const getSpriteLocation = (walkIndex, direction) => {
             return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*2}px`
         case 'NORTH':
             return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*3}px`
+        default:
+            return false
     }
 }
 
