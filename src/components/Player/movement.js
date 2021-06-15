@@ -92,7 +92,7 @@ const handleMovement = (player) => {
                 return attemptMove('SOUTH')
 
             default:
-                console.log(e.keyCode)
+                
         }
     }
 
